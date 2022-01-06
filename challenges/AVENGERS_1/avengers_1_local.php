@@ -21,11 +21,6 @@ Html::debug($thanos, '$thanos');
 $tour = 0;
 $puissanceAvengers = 0;
 
-$tourIronMan = true;
-$tourSpiderman = false;
-$tourCaptainamerica = false;
-$tourThor = false;
-
 while ($puissanceAvengers <= $thanos) {
 
 	// Calcul puissance Avengers
@@ -38,32 +33,33 @@ while ($puissanceAvengers <= $thanos) {
 
 	Html::debug($puissanceAvengers, 'Puissance Avengers');
 
-	// Avec un switch true
-	switch (true) {
-		case $tourIronMan:
-			$ironman++;
-			$tourIronMan = false;
-			$tourSpiderman = true;
-		break;
+	// Le modulo % => Le reste d'une division entière
 
-		case $tourSpiderman:
-			$spiderman++;
-			$tourSpiderman = false;
-			$tourCaptainamerica = true;
-		break;
+	$tourAvenger = $tour%4;
 
-		case $tourCaptainamerica:
-			$captainamerica++;
-			$tourCaptainamerica = false;
-			$tourThor = true;
-		break;
+	// 1 / 4 => 0 reste 1 => 1%4 => 1
+	// 9 / 4 => 2 reste 1 => 9%4 => 1
+	// 10 / 4 => 2 reste 2 => 10%4 => 2
+	// 8 / 4 => 2 reste 0 => 8%4 => 0
 
-		case $tourThor:
-			$thor++;
-			$tourThor = false;
-			$tourIronMan = true;
-		break;
+	// 0, 1, 2, 3, 0, 1, 2, 3, 0, 1
+	if ($tourAvenger == 0) {
+		$ironman++;
 	}
+
+	if ($tourAvenger == 1) {
+		$spiderman++;
+	}
+
+	if ($tourAvenger == 2) {
+		$captainamerica++;
+	}
+
+	if ($tourAvenger == 3) {
+		$thor++;
+	}
+
+	$tour++;
 }
 
 // REPONSE ATTENDUE -------------------
