@@ -38,31 +38,31 @@ while ($puissanceAvengers <= $thanos) {
 
 	Html::debug($puissanceAvengers, 'Puissance Avengers');
 
-	$tour++;
+	// Avec un switch true
+	switch (true) {
+		case $tourIronMan:
+			$ironman++;
+			$tourIronMan = false;
+			$tourSpiderman = true;
+		break;
 
-	// D'abord ironman
-	if ($tourIronMan) {
-		$ironman++;
-		$tourIronMan = false;
-		$tourSpiderman = true;
+		case $tourSpiderman:
+			$spiderman++;
+			$tourSpiderman = false;
+			$tourCaptainamerica = true;
+		break;
 
-	// Puis Spiderman
-	} elseif ($tourSpiderman) {
-		$spiderman++;
-		$tourSpiderman = false;
-		$tourCaptainamerica = true;
+		case $tourCaptainamerica:
+			$captainamerica++;
+			$tourCaptainamerica = false;
+			$tourThor = true;
+		break;
 
-	// Puis Captain America
-	} elseif ($tourCaptainamerica) {
-		$captainamerica++;
-		$tourCaptainamerica = false;
-		$tourThor = true;
-
-	// Puis Thor
-	} elseif ($tourThor) {
-		$thor++;
-		$tourThor = false;
-		$tourIronMan = true;
+		case $tourThor:
+			$thor++;
+			$tourThor = false;
+			$tourIronMan = true;
+		break;
 	}
 }
 
